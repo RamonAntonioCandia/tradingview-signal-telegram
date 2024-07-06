@@ -9,13 +9,13 @@ const app = express();
 app.use(json());
 
 app.post('/webhook', handleTradingViewSignal);
-app.get("/signals", getSignals)
+app.get("/signals", getSignals);
 
 const startServer = async () => {
   await connectToDatabase();
-  await startBotService()
-  app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+  await startBotService();
+  app.listen(8080, () => {
+    console.log('Server is running on port 8080');
   });
 };
 
