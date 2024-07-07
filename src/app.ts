@@ -16,7 +16,8 @@ app.get('/test-telegram', async (req, res) => {
     await sendTelegramMessage('This is a test message from your bot!');
     res.status(200).send('Test message sent to Telegram');
   } catch (error) {
-    res.status(500).send(`Failed to send test message: ${error.message}`);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    res.status(500).send(`Failed to send test message: ${errorMessage}`);
   }
 });
 
