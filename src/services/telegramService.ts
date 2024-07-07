@@ -6,12 +6,13 @@ const bot = new Telegraf(config.telegramBotToken);
 
 export const sendTelegramMessage = async (message: string) => {
   try {
-    const chatId = config.telegramChatId; // Ensure this is set correctly
+    const chatId = config.telegramChatId;
     await bot.telegram.sendMessage(chatId, message);
     logger.info(`Message sent to Telegram chat ID ${chatId}: ${message}`);
   } catch (error) {
-    logger.error(`Error sending message to Telegram: ${error.message}`);
-    throw new Error(`Error sending message to Telegram: ${error.message}`);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    logger.error(`Error sending message to Telegram: ${errorMessage}`);
+    throw new Error(`Error sending message to Telegram: ${errorMessage}`);
   }
 };
 

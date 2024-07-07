@@ -5,7 +5,7 @@ import { Signal } from '../models/Signal';
 
 export const connectToDatabase = async () => {
   try {
-    await mongoose.connect(config.mongodbUri, {
+    await mongoose.connect(config.mongoURI, {
       // useNewUrlParser: true,
       // useUnifiedTopology: true,
     });
@@ -18,4 +18,4 @@ export const connectToDatabase = async () => {
 export const getSignals = async (req: Request, res: Response) => {
   const signals = await Signal.find({}, { action: 1, symbol: 1 });
   res.json(signals);
-}
+};
