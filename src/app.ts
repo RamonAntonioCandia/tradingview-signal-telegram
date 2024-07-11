@@ -1,18 +1,18 @@
 import express from 'express';
 import { json } from 'body-parser';
-import { handleTradingViewSignal } from './services/tradingviewService';
+// import { handleTradingViewSignal } from './services/tradingviewService';
 import { connectToDatabase } from './services/databaseService';
 import { startBotService, sendTelegramMessage } from './services/telegramService';
-import { getSignals } from './services/databaseService';
+// import { getSignals } from './services/databaseService';
 
 const app = express();
 app.use(json());
 
-app.post('/webhook', handleTradingViewSignal);
+// app.post('/webhook', handleTradingViewSignal);
 app.get('/log', async (req, res) => {
     console.log("recieved from log")
 });
-app.get("/signals", getSignals);
+// app.get("/signals", getSignals);
 
 app.get('/test-telegram', async (req, res) => {
   try {
