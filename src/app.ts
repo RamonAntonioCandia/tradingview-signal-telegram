@@ -9,6 +9,9 @@ const app = express();
 app.use(json());
 
 app.post('/webhook', handleTradingViewSignal);
+app.get('/log', async (req, res) => {
+    console.log("recieved from log")
+});
 app.get("/signals", getSignals);
 
 app.get('/test-telegram', async (req, res) => {
