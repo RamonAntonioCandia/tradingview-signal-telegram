@@ -1,18 +1,15 @@
 import express from 'express';
 import { json } from 'body-parser';
-// import { handleTradingViewSignal } from './services/tradingviewService';
+import { handleTradingViewSignal } from './services/tradingviewService';
 import { connectToDatabase } from './services/databaseService';
 import { startBotService, sendTelegramMessage } from './services/telegramService';
-// import { getSignals } from './services/databaseService';
+import { getSignals } from './services/databaseService';
 
 const app = express();
 app.use(json());
 
-// app.post('/webhook', handleTradingViewSignal);
-app.get('/log', async (req, res) => {
-    console.log("recieved from log")
-});
-// app.get("/signals", getSignals);
+app.post('/webhook', handleTradingViewSignal);
+app.get("/signals", getSignals);
 
 app.get('/test-telegram', async (req, res) => {
   try {
@@ -25,8 +22,8 @@ app.get('/test-telegram', async (req, res) => {
 });
 
 const startServer = async () => {
-  // await connectToDatabase();
-  // await startBotService();
+  await connectToDatabase();
+  await startBotService();
   app.listen(8080, () => {
     console.log('Server is running on port 8080');
   });
