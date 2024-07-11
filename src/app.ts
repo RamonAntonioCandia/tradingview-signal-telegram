@@ -4,6 +4,7 @@ import { handleTradingViewSignal } from './services/tradingviewService';
 import { connectToDatabase } from './services/databaseService';
 import { startBotService, sendTelegramMessage } from './services/telegramService';
 import { getSignals } from './services/databaseService';
+import { config } from './config/config';
 
 const app = express();
 app.use(json());
@@ -24,7 +25,7 @@ app.get('/test-telegram', async (req, res) => {
 const startServer = async () => {
   // await connectToDatabase();
   await startBotService();
-  app.listen(8080, () => {
+  app.listen(config.port, () => {
     console.log('Server is running on port 8080');
   });
 };
