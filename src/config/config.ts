@@ -12,12 +12,8 @@ const getConfig = (key: string): string => {
 
 export const config = {
   port: process.env.PORT || 8080,
-  // mongoURI: getConfig('MONGODB_URI'),
-  // telegramBotToken: getConfig('TELEGRAM_BOT_TOKEN'),
-  // telegramChatId: getConfig('TELEGRAM_CHAT_ID'),
-  // tradingviewWebhookSecret: getConfig('TRADINGVIEW_WEBHOOK_SECRET')
-  mongoURI: "",
-  telegramBotToken: "",
-  telegramChatId: '',
-  tradingviewWebhookSecret: ""
+  mongoURI: getConfig('MONGODB_URI'),
+  telegramBotToken: getConfig('TELEGRAM_BOT_TOKEN'),
+  telegramChatId: getConfig('TELEGRAM_CHAT_ID'),
+  tradingviewWebhookSecret: getConfig('TRADINGVIEW_WEBHOOK_SECRET')
 };
