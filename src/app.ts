@@ -22,7 +22,7 @@ app.get('/test-telegram', async (req, res) => {
 });
 
 const startServer = async () => {
-  await connectToDatabase();
+  // await connectToDatabase();
   await startBotService();
   app.listen(8080, () => {
     console.log('Server is running on port 8080');

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Signal } from '../models/Signal';
+// import { Signal } from '../models/Signal';
 import { config } from '../config/config';
 import { sendTelegramMessage } from './telegramService';
 import { logger } from '../utils/logger';
@@ -18,8 +18,8 @@ export const handleTradingViewSignal = async (req: Request, res: Response) => {
 
   try {
     // Save the signal to the database
-    const newSignal = new Signal({ symbol, action, timestamp });
-    await newSignal.save();
+    // const newSignal = new Signal({ symbol, action, timestamp });
+    // await newSignal.save();
     logger.info('Signal saved to database');
 
     res.status(200).send('Signal received');
